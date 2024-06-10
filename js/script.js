@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 prevHeight = window.style.height;
                 window.style.top = '0';
                 window.style.left = '0';
-                window.style.width = '99.6%';
-                window.style.height = '99.3%';
+                window.style.width = '98.6%';
+                window.style.height = '98.3%';
                 window.classList.add('maximized');
                 maximizeBtn.innerHTML = '';
                 maximizeLink.style.color = 'gray';

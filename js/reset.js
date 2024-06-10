@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
         window.style.display = 'none';
         window.style.left = '50px';
         window.style.top = '50px';
-        window.style.width = '300px';
-        window.style.height = '200px';
+        window.style.width = '350px';
+        window.style.height = '250px';
         window.classList.remove('maximized');
     });
 

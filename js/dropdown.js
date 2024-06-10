@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownContent.innerHTML = `
             <a href="#">Move</a>
             <a href="#" class="resize-link" style="color: gray;">Resize</a>
+            <a href="#">Restore</a>
             <a href="#">Minimize</a>
             <a href="#" class="maximize-link">Maximize</a>
         `;
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Mostrar/ocultar el menú al hacer clic en el botón
         dropbtn.addEventListener('click', function() {
             dropdownContent.classList.toggle('show');
+            updateRestoreOption(dropdownContent);
         });
 
         // Cerrar el menú si se hace clic fuera de él
@@ -44,6 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Resize option clicked');
                     // Implementar función de cambiar tamaño de la ventana
                     break;
+                case 'Restore':
+                    console.log('Restore option clicked');
+                    restoreWindow(windowElement);
+                    break;
                 case 'Minimize':
                     console.log('Minimize option clicked');
                     minimizeWindow(windowElement);
@@ -57,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 default:
                     break;
             }
+            updateRestoreOption(dropdownContent);
         }
 
         // Función para activar el movimiento de la ventana
@@ -97,6 +104,21 @@ document.addEventListener('DOMContentLoaded', function() {
             windowElement.style.display = 'none';
         }
 
+        // Función para restaurar la ventana al tamaño previo
+        function restoreWindow(windowElement) {
+            if (windowElement.classList.contains('maximized')) {
+                windowElement.style.top = windowElement.dataset.prevTop || '';
+                windowElement.style.left = windowElement.dataset.prevLeft || '';
+                windowElement.style.width = windowElement.dataset.prevWidth || '';
+                windowElement.style.height = windowElement.dataset.prevHeight || '';
+
+                windowElement.classList.remove('maximized');
+                dropdownContent.querySelector('.maximize-link').style.color = ''; // Restaurar color por defecto para Maximize
+                dropdownContent.querySelector('.resize-link').style.color = 'gray'; // Cambiar a gris para Restore
+            }
+            bringToFront(windowElement);
+        }
+
         // Función para maximizar o restaurar la ventana
         function maximizeWindow(windowElement) {
             if (!windowElement.classList.contains('maximized')) {
@@ -112,30 +134,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 windowElement.style.width = '100vw';
                 windowElement.style.height = '100vh';
 
-                // Deshabilitar el cursor de mover cuando está maximizado
-                windowElement.style.cursor = '';
-                dropdownContent.querySelector('.maximize-link').style.color = 'gray'; // Cambiar color a gris
-                dropdownContent.querySelector('.resize-link').style.color = 'gray'; // Cambiar color a gris para Resize
-            } else {
-                // Restaurar la ventana
-                windowElement.classList.remove('maximized');
-                windowElement.style.top = windowElement.dataset.prevTop || '';
-                windowElement.style.left = windowElement.dataset.prevLeft || '';
-                windowElement.style.width = windowElement.dataset.prevWidth || '';
-                windowElement.style.height = windowElement.dataset.prevHeight || '';
-
-                // Habilitar el cursor de mover cuando se restaura
-                enableMoveWindow(windowElement);
-                dropdownContent.querySelector('.maximize-link').style.color = ''; // Restaurar color por defecto
+                // Cambiar a negro para Maximize y blanco para Restore
+                dropdownContent.querySelector('.maximize-link').style.color = 'gray';
                 dropdownContent.querySelector('.resize-link').style.color = ''; // Restaurar color por defecto para Resize
             }
+            bringToFront(windowElement);
         }
 
-        // Evitar que se cierre el menú al hacer clic en el enlace Maximize si la ventana está maximizada
-        dropdownContent.querySelector('.maximize-link').addEventListener('click', function(event) {
+        // Función para actualizar la opción Restore según el estado de la ventana
+        function updateRestoreOption(dropdownContent) {
+            const windowElement = dropbtn.closest('.window');
+            const restoreLink = dropdownContent.querySelector('a[href="#"]:nth-child(3)');
+
             if (windowElement.classList.contains('maximized')) {
-                event.stopPropagation(); // Evitar la propagación del evento
+                restoreLink.style.color = ''; // Restaurar color normal para Restore
+            } else {
+                restoreLink.style.color = 'gray'; // Cambiar a gris para Restore
             }
-        });
+        }
     });
+
+    function bringToFront(window) {
+        const highestZIndex = Math.max(...Array.from(document.querySelectorAll('.window')).map(w => parseInt(w.style.zIndex) || 0));
+        window.style.zIndex = highestZIndex + 1;
+    }
 });

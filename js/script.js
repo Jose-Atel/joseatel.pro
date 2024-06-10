@@ -6,15 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
         file.addEventListener('click', () => {
             const fileId = file.getAttribute('data-file');
             const window = document.getElementById(`${fileId}-window`);
-            // Ocultar todas las ventanas antes de mostrar la ventana seleccionada
             windows.forEach(win => {
                 win.style.display = 'none';
-                win.classList.remove('custom-style'); // Remover la clase custom-style
+                win.classList.remove('custom-style');
             });
             window.style.display = 'flex';
             bringToFront(window);
-
-            // Agregar la clase dinámicamente a la ventana
             window.classList.add('custom-style');
         });
     });
@@ -24,55 +21,70 @@ document.addEventListener('DOMContentLoaded', function() {
         const minimizeBtn = window.querySelector('.minimize');
         const maximizeBtn = window.querySelector('.maximize');
         const dropdown = window.querySelector('.dropdown');
+        const maximizeLink = dropdown.querySelector('.maximize-link');
+        const restoreLink = dropdown.querySelector('.restore-link');
 
         let isMaximized = false;
         let startX, startY, startWidth, startHeight;
-        
+        let prevTop, prevLeft, prevWidth, prevHeight;
+
         titleBar.addEventListener('mousedown', e => {
-            if (!isMaximized) {
-                startX = e.clientX - window.offsetLeft;
-                startY = e.clientY - window.offsetTop;
-                
-                function mouseMoveHandler(e) {
+            startX = e.clientX - window.offsetLeft;
+            startY = e.clientY - window.offsetTop;
+
+            function mouseMoveHandler(e) {
+                if (!isMaximized) {
                     window.style.left = `${e.clientX - startX}px`;
                     window.style.top = `${e.clientY - startY}px`;
-                    bringToFront(window);
                 }
-
-                function mouseUpHandler() {
-                    document.removeEventListener('mousemove', mouseMoveHandler);
-                    document.removeEventListener('mouseup', mouseUpHandler);
-                }
-
-                document.addEventListener('mousemove', mouseMoveHandler);
-                document.addEventListener('mouseup', mouseUpHandler);
+                bringToFront(window);
             }
+
+            function mouseUpHandler() {
+                document.removeEventListener('mousemove', mouseMoveHandler);
+                document.removeEventListener('mouseup', mouseUpHandler);
+            }
+
+            document.addEventListener('mousemove', mouseMoveHandler);
+            document.addEventListener('mouseup', mouseUpHandler);
         });
 
         minimizeBtn.addEventListener('click', () => {
             window.style.display = 'none';
         });
 
-        maximizeBtn.addEventListener('click', () => {
+        function maximizeRestoreWindow() {
             if (isMaximized) {
-                window.style.width = startWidth;
-                window.style.height = startHeight;
-                window.style.left = startX;
-                window.style.top = startY;
+                window.style.top = prevTop;
+                window.style.left = prevLeft;
+                window.style.width = prevWidth;
+                window.style.height = prevHeight;
+                window.classList.remove('maximized');
+                maximizeBtn.innerHTML = '▲';
+                maximizeLink.style.color = '';
+                restoreLink.style.color = 'gray';
                 isMaximized = false;
             } else {
-                startWidth = window.style.width;
-                startHeight = window.style.height;
-                startX = window.style.left;
-                startY = window.style.top;
-                window.style.width = '100%';
-                window.style.height = '100%';
-                window.style.left = '0';
+                prevTop = window.style.top;
+                prevLeft = window.style.left;
+                prevWidth = window.style.width;
+                prevHeight = window.style.height;
                 window.style.top = '0';
+                window.style.left = '0';
+                window.style.width = '99.6%';
+                window.style.height = '99.3%';
+                window.classList.add('maximized');
+                maximizeBtn.innerHTML = '';
+                maximizeLink.style.color = 'gray';
+                restoreLink.style.color = '';
                 isMaximized = true;
             }
             bringToFront(window);
-        });
+        }
+
+        maximizeBtn.addEventListener('click', maximizeRestoreWindow);
+        maximizeLink.addEventListener('click', maximizeRestoreWindow);
+        restoreLink.addEventListener('click', maximizeRestoreWindow);
 
         dropdown.addEventListener('click', () => {
             dropdown.classList.toggle('show');

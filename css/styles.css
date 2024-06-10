@@ -208,13 +208,7 @@ body {
     display: none;
 }
 
-.window.maximized {
-    width: 100vw !important;
-    height: calc(100vh - 40px) !important; /* Ajusta según la altura deseada */
-    top: 10px !important; /* Ajusta esta altura según tus necesidades */
-    left: 0 !important;
-    border-radius: 0;
-}
+
 
 
 .controls .maximize {

@@ -1,18 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const files = document.querySelectorAll('.file');
+    const icons = document.querySelectorAll('.file');
     const windows = document.querySelectorAll('.window');
     
-    files.forEach(file => {
-        file.addEventListener('click', () => {
-            const fileId = file.getAttribute('data-file');
+    icons.forEach(icon => {
+        // Al hacer clic en un icono
+        icon.addEventListener('click', () => {
+            const fileId = icon.getAttribute('data-file');
             const window = document.getElementById(`${fileId}-window`);
-            windows.forEach(win => {
-                win.style.display = 'none';
-                win.classList.remove('custom-style');
-            });
-            window.style.display = 'flex';
-            bringToFront(window);
-            window.classList.add('custom-style');
+            
+            // Mostrar la ventana correspondiente si está oculta
+            if (window.style.display === 'none' || window.style.display === '') {
+                window.style.display = 'flex';
+                bringToFront(window);
+            } else {
+                bringToFront(window); // Traer al frente si ya está abierta
+            }
+        });
+
+        // Agregar funcionalidad de arrastrar para mover el icono
+        let dragging = false;
+        let offsetX, offsetY;
+
+        icon.addEventListener('mousedown', (e) => {
+            dragging = true;
+            offsetX = e.clientX - parseFloat(window.getComputedStyle(icon).left);
+            offsetY = e.clientY - parseFloat(window.getComputedStyle(icon).top);
+            bringToFront(icon); // Traer el icono al frente al comenzar a arrastrar
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (dragging) {
+                const x = e.clientX - offsetX;
+                const y = e.clientY - offsetY;
+                icon.style.left = `${x}px`;
+                icon.style.top = `${y}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            dragging = false;
         });
     });
 
@@ -71,10 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 prevHeight = window.style.height;
                 window.style.top = '0';
                 window.style.left = '0';
-                window.style.width = '98.6%';
-                window.style.height = '98.3%';
+                window.style.width = '98%';
+                window.style.height = '98%';
                 window.classList.add('maximized');
-                maximizeBtn.innerHTML = '';
+                maximizeBtn.innerHTML = '▼';
                 maximizeLink.style.color = 'gray';
                 restoreLink.style.color = '';
                 isMaximized = true;
@@ -95,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    function bringToFront(window) {
-        const highestZIndex = Math.max(...Array.from(document.querySelectorAll('.window')).map(w => parseInt(w.style.zIndex) || 0));
-        window.style.zIndex = highestZIndex + 1;
+    function bringToFront(element) {
+        const highestZIndex = Math.max(...Array.from(document.querySelectorAll('.window')).map(el => parseInt(el.style.zIndex) || 0));
+        element.style.zIndex = highestZIndex + 1;
     }
 });

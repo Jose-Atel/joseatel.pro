@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --background: #e6e6e6;
+    --main-color:#000000;
+    --second-color:#ffffff;
+    --window-background: #C0C0C0;
+    --window-border: #000;
+    --title-bar-background: #0000a7;
+    --title-bar-text: white;
+    --title-bar-border: #000;
+    --control-button-background: #C0C0C0;
+    --control-button-hover: #808080;
+}
+
+body {
+    font-family: "VT323", monospace;
+    font-style: normal;
+    font-weight: 100;
+    background-color: var(--background);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#desktop {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.file {
+    width: 60px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--main-color);
+    margin: 10px;
+}
+
+.file-name {
+    background-color: var(--background);
+    font-size: 1.25em;
+}
+
+.file img {
+    width: 32px;
+    height: 32px;
+}
+
+.window {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 350px;
+    height: 250px;
+    border: 2px solid var(--window-border);
+    background-color: var(--window-background);
+    display: flex;
+    flex-direction: column;
+    resize: both;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 3!important;
+}
+
+
+.title-bar {
+    background-color: var(--title-bar-background);
+    color: var(--title-bar-text);
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid var(--title-bar-border);
+    height: 2em;
+}
+
+.title-bar .title {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+.left-options {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border-right: 2px solid var(--window-border);
+    padding: 4px;
+    background: #c3c7cb;
+}
+
+.dropdown:hover {
+    position: relative;
+    display: inline-block;
+    border-right: 2px solid var(--window-border);
+    padding: 4px;
+    background: var(--control-button-hover);
+}
+
+.dropbtn {
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    position: relative;
+}
+
+.dropbtn::before {
+    content: '';
+    width: 60%;
+    height: 4px; /* Ajusta el tamaño de la barra */
+    background-color: #c3c7cb;
+    margin: 0 auto; /* Ajusta el espaciado horizontal */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #000;
+}
+
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--title-bar-background);
+    color: var(--second-color);
+}
+
+.dropdown-content.show {
+    display: block !important;
+    margin: 10px 0 0 0;
+    border: 2px solid var(--window-border);
+    margin: 4px 0px 0px -6px;
+}
+
+.controls {
+    display: flex;
+    border-left: 2px solid var(--window-border);
+}
+
+.controls .minimize::before {
+    content: '▼';
+}
+
+.controls .maximize::before {
+    content: '▲';
+}
+
+.controls button {
+    background-color: var(--control-button-background);
+    border: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    color: black;
+    font-size: 12px;
+    cursor: pointer;
+    border-right: 2px solid #6b6b6b;
+    border-bottom: 2px solid #6b6b6b;
+    border-top: 2px solid #f9f9f9;
+    border-left: 2px solid #f9f9f9;
+}
+
+.controls button:hover {
+    background-color: var(--control-button-hover);
+}
+
+.content {
+    flex: 1;
+    padding: 10px;
+    background-color: white;
+    overflow: auto;
+    border: 2px solid var(--title-bar-border);
+    border-top: none;
+}
+
+.window.minimized {
+    display: none;
+}
+
+.window.maximized {
+    width: 100vw !important;
+    height: calc(100vh - 40px) !important; /* Ajusta según la altura deseada */
+    top: 10px !important; /* Ajusta esta altura según tus necesidades */
+    left: 0 !important;
+    border-radius: 0;
+}
+
+
+.controls .maximize {
+    position: relative;
+}
+
+.controls .maximize .icon-down,
+.controls .maximize .icon-up {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Inicialmente oculto */
+}
+
+.controls .maximized .icon-up {
+    display: block; /* Mostrar el icono de maximizar solo cuando está maximizado */
+}
+
+.controls .maximize:hover .icon-down {
+    display: block; /* Mostrar el icono de minimizar al hacer hover */
+}
+
+.controls .maximize:hover .icon-up {
+    display: none; /* Ocultar el icono de maximizar al hacer hover */
+}
+
+/*
+**/
+/* Estilo para la ventana */
+
+/* Agregar estilos para la clase custom-style */
+.custom-style {
+    padding: 3px;
+    border: 2px solid var(--title-bar-border);
+    background-color: var(--window-background);
+    margin: 0.25em;
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+
+
+

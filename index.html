@@ -2,10 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><JoseAtel class="pro"></JoseAtel></title>
+    <title>Windows 3.11 Simulation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="robots" content="noindex">
 </head>
 <body>
+    <div id="desktop">
+        <!-- Icono en el escritorio -->
+        <div class="file single" data-file="file1">
+            <img src="images/help.png" alt="File Icon">
+            <div class="file-name">Help</div>
+        </div>
+        <!-- Ventana correspondiente -->
+        <div id="file1-window" class="window">
+            <div class="title-bar">
+                <div class="left-options">
+                    <div class="dropdown">
+                        <button class="dropbtn"></button>
+                        <div id="menu">
+                        </div>
+                    </div>
+                </div>
+                <div class="title">Help</div>
+                <div class="controls">
+                    <button class="minimize"></button>
+                    <button class="maximize"></button>
+                </div>
+            </div>
+            <div class="content">
+                <!-- Contenido de la ventana -->
+                Aquí va el contenido de Document 1.
+            </div>
+        </div>
+    </div>        
+    <script src="js/script.js"></script>
+    <script src="js/reset.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/backgrund.js"></script>
 </body>
 </html>

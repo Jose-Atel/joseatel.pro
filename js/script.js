@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const y = e.clientY - offsetY;
                 icon.style.left = `${x}px`;
                 icon.style.top = `${y}px`;
+                bringToFront(icon); // Asegurar que el icono esté al frente mientras se arrastra
             }
         });
 
@@ -122,7 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function bringToFront(element) {
-        const highestZIndex = Math.max(...Array.from(document.querySelectorAll('.window')).map(el => parseInt(el.style.zIndex) || 0));
+        const highestZIndex = Math.max(
+            ...Array.from(document.querySelectorAll('.window, .file')).map(el => parseInt(el.style.zIndex) || 0)
+        );
         element.style.zIndex = highestZIndex + 1;
     }
 });

@@ -6,13 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Servicios Freelance</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("contact-form").submit();
-        }
-    </script>    
+    <link rel="stylesheet" href="css/styles.css">    
 </head>
 <body>
     <header>
@@ -58,7 +52,7 @@
 
         <section id="contacto" aria-labelledby="contacto-heading">
             <h2 id="contacto-heading">Contacto</h2>
-            <form id="contact-form" action="https://formspree.io/f/meojjloe" method="post">
+            <form id="contact-form">
                 <fieldset>
                     <legend>Envíame un mensaje</legend>
                     
@@ -74,12 +68,8 @@
                     <label for="mensaje">Mensaje:</label>
                     <textarea id="mensaje" name="mensaje" required></textarea>
                     
-                    <!-- reCAPTCHA widget -->
-                    <button class="g-recaptcha" 
-                        data-sitekey="6LdhZgAqAAAAAEfBRxoyi4ZEy06EU3jxhB4hX984" 
-                        data-callback='onSubmit' 
-                        data-action='submit'>Enviar
-                    </button>
+                    <!-- Botón para enviar por WhatsApp -->
+                    <button type="button" onclick="enviarWhatsapp()">Enviar por WhatsApp</button>
                 </fieldset>
             </form>            
         </section>
@@ -97,5 +87,23 @@
             </ul>
         </nav>
     </footer>
+    <script>
+        function enviarWhatsapp() {
+            var nombre = document.getElementById('nombre').value;
+            var telefono = document.getElementById('telefono').value;
+            
+            // Crear el mensaje con los datos del formulario
+            var mensaje = "Hola, mi nombre es " + nombre + ". Mi número de teléfono es " + telefono + ".";
+            
+            // URL base de WhatsApp
+            var baseUrl = "https://api.whatsapp.com/send";
+            
+            // Componer la URL completa con el mensaje prellenado
+            var url = `${baseUrl}?phone=094054380&text=${encodeURIComponent(mensaje)}`;
+            
+            // Abrir enlace en una nueva ventana
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>

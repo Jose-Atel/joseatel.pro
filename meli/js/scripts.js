@@ -1,5 +1,5 @@
-const publicKey = 'APP_USR-3fa91575-503e-476a-b21d-4f49cae39fa6'; // Public Key
-const integratorId = 'dev_24c65fb163bf11ea96500242ac130004'; // Integrator ID
+const publicKey = 'APP_USR-3fa91575-503e-476a-b21d-4f49cae39fa6'; // Reemplaza con tu Public Key
+const integratorId = 'dev_24c65fb163bf11ea96500242ac130004'; // Reemplaza con tu Integrator ID
 
 // Inicializa el SDK de Mercado Pago
 const mp = new MercadoPago(publicKey, {
@@ -55,22 +55,26 @@ document.getElementById('checkout-button').addEventListener('click', function ()
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667` // Access Token
+            'Authorization': `Bearer APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667` // Reemplaza con tu Access Token
         },
         body: JSON.stringify(preference)
     })
     .then(response => response.json())
     .then(data => {
-        // Abre el checkout modal de Mercado Pago
-        mp.checkout({
-            preference: {
-                id: data.id
-            },
-            render: {
-                container: '.container', // Indica el contenedor donde se abrirá el modal
-                label: 'Pagar la compra'
-            }
-        });
+        if (data && data.id) {
+            // Abre el checkout modal de Mercado Pago
+            mp.checkout({
+                preference: {
+                    id: data.id
+                },
+                render: {
+                    container: '.container', // Indica el contenedor donde se abrirá el modal
+                    label: 'Pagar la compra'
+                }
+            });
+        } else {
+            console.error('Error: La preferencia no se creó correctamente');
+        }
     })
     .catch(error => {
         console.error('Error al crear la preferencia:', error);

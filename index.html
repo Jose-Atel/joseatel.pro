@@ -53,24 +53,26 @@
 
         <section id="contacto" aria-labelledby="contacto-heading">
             <h2 id="contacto-heading">Contacto</h2>
-            <form id="contact-form">
+            <form id="contact-form" action="#" method="post">
                 <fieldset>
-                    <legend>Envíame un mensaje</legend>
+                    <legend>Envíame un mensaje por WhatsApp</legend>
                     
                     <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required pattern="[a-zA-Z\s]+" title="Solo se permiten letras y espacios">
+                    <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" title="Solo se permiten letras y espacios">
+                    <div id="error-nombre" style="color: red;"></div>
                     
                     <label for="email">Correo electrónico:</label>
                     <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" inputmode="email" title="Debe ser un correo válido">
+                    <div id="error-email" style="color: red;"></div>
                     
                     <label for="telefono">Teléfono:</label>
                     <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{10}" inputmode="numeric" title="Debe ser un número de 10 dígitos">
+                    <div id="error-telefono" style="color: red;"></div>
                     
                     <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" required>Me gustaría </textarea>
+                    <textarea id="mensaje" name="mensaje" required>Me gustaría ...</textarea>
                     
-                    <!-- Botón para enviar por WhatsApp -->
-                    <button type="button" onclick="enviarWhatsapp()">Enviar por WhatsApp</button>
+                    <button type="button" onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
                 </fieldset>
             </form>            
         </section>

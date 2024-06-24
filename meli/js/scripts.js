@@ -62,16 +62,12 @@ document.getElementById('checkout-button').addEventListener('click', function ()
     .then(response => response.json())
     .then(data => {
         if (data && data.id) {
-            // Abre el checkout modal de Mercado Pago
-            mp.checkout({
+            const checkout = mp.checkout({
                 preference: {
                     id: data.id
-                },
-                render: {
-                    container: '.container', // Indica el contenedor donde se abrirá el modal
-                    label: 'Pagar la compra'
                 }
             });
+            checkout.open();
         } else {
             console.error('Error: La preferencia no se creó correctamente');
         }

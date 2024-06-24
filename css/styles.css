@@ -84,7 +84,6 @@ section {
     padding: 2em;
     background-color: var(--section-background);
     border-radius: 8px;
-    box-shadow: 0 0 10px var(--section-border);
 }
 
 a {
@@ -105,6 +104,10 @@ form {
 
 label {
     font-weight: bold;
+}
+
+legend {
+    padding: 0 0 2em 0;
 }
 
 input, textarea {

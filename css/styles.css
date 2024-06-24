@@ -44,8 +44,8 @@ header, footer {
 }
 
 header nav ul, footer nav ul {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1em;
     padding: 0;
     list-style: none;
@@ -53,7 +53,7 @@ header nav ul, footer nav ul {
 }
 
 header nav ul li, footer nav ul li {
-    margin: 0 1em;
+    margin: 0;
 }
 
 header nav ul li a, footer nav ul li a {

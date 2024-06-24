@@ -94,11 +94,9 @@
             var telefono = document.getElementById('telefono').value;
             var mensaje = document.getElementById('mensaje').value;
             
-            // Construir el mensaje con todos los datos del formulario
-            var textoMensaje = "Nombre: " + nombre + "\n";
-            textoMensaje += "Correo electrónico: " + email + "\n";
-            textoMensaje += "Teléfono: " + telefono + "\n";
-            textoMensaje += "Mensaje: " + mensaje;
+            // Construir el mensaje con el formato deseado
+            var textoMensaje = `Hola, mi nombre es ${nombre}, mi número de teléfono es ${telefono} y mi dirección de correo electrónico es ${email}. 
+                                \n${mensaje}`;
             
             // URL base de WhatsApp
             var baseUrl = "https://wa.me";

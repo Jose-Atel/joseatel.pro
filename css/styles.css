@@ -1,19 +1,26 @@
 /* Variables para tamaños de fuentes */
 :root {
     /* Background & Colors */
-    --main-background:white;
-    --secundary-background:blue;
-    --main-color:black;
-    --secundary-color:white;
+    --main-background: #f4f4f4;
+    --secundary-background: #333;
+    --main-color: #333;
+    --secundary-color: #fff;
+    --link-color: #333;
+    --link-hover-color: #007BFF;
+    --section-background: #fff;
+    --section-border: rgba(0, 0, 0, 0.1);
+
     /* Font Size */
     --font-size-base: 1rem; /* Tamaño base de la fuente - 1rem = 16px */
     --font-size-small: 0.875rem; /* Tamaño de fuente pequeña */
     --font-size-medium: 1.25rem; /* Tamaño de fuente mediana */
     --font-size-large: 1.5rem; /* Tamaño de fuente grande */
+
     /* Font Family */
-    --font-family-base:font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
-    --font-family-special: font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
+    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
+    --font-family-special: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
 }
+
 /* Estilos para el cuerpo y fuentes */
 body {
     font-family: var(--font-family-base);
@@ -21,14 +28,44 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: var(--main-background);
+    color: var(--main-color);
 }
 
 main, header {
     padding: 1em;
 }
 
-/* Estilos para encabezados */
+header, footer {
+    background-color: var(--secundary-background);
+    color: var(--secundary-color);
+    padding: 1em 0;
+    text-align: center;
+}
+
+header nav ul, footer nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+header nav ul li, footer nav ul li {
+    margin: 0 1em;
+}
+
+header nav ul li a, footer nav ul li a {
+    color: var(--secundary-color);
+    text-decoration: none;
+    font-size: var(--font-size-medium);
+}
+
+header nav ul li a:hover, footer nav ul li a:hover {
+    color: var(--link-hover-color);
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-special);
     font-weight: normal;
@@ -42,22 +79,66 @@ h4 { font-size: 1.2em; }
 h5 { font-size: 1em; }
 h6 { font-size: 0.9em; }
 
-/* Estilo para imágenes */
+section {
+    margin-bottom: 2em;
+    padding: 2em;
+    background-color: var(--section-background);
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--section-border);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, textarea {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    padding: 0.5em;
+    border: 1px solid var(--section-border);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 0.75em;
+    background-color: var(--secundary-background);
+    color: var(--secundary-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: var(--font-size-medium);
+}
+
+button:hover {
+    background-color: var(--link-hover-color);
+}
+
+footer p {
+    margin: 0.5em 0;
+    font-size: var(--font-size-small);
+}
+
 img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 10px 0;
 }
-
-/* Estilo para pie de página */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: var(--secundary-background);
-    color: var(--secundary-color);
-    font-size: 0.9em;
-    margin-top: 20px;
-}
-
-/** CSS TEMPORARY **/

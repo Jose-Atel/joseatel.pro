@@ -75,7 +75,7 @@ function enviarWhatsApp() {
     var baseUrl = 'https://wa.me';
 
     // Componer la URL completa con el mensaje prellenado
-    var url = `${baseUrl}/NUMERO_DE_TELEFONO/?text=${encodeURIComponent(textoMensaje)}`;
+    var url = `${baseUrl}/+59894054380/?text=${encodeURIComponent(textoMensaje)}`;
 
     // Abrir enlace en una nueva ventana
     window.open(url, '_blank');

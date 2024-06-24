@@ -38,7 +38,7 @@ function enviarWhatsApp() {
     }
 
     // Validación de formato de correo electrónico
-    var emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    var emailRegex = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/i;
     if (!emailRegex.test(email.value.toLowerCase())) {
         errorEmail.textContent = 'Debe ser un correo válido';
         email.style.border = '1px solid red';

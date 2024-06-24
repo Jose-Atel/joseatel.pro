@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("contact-form").submit();
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -53,7 +58,7 @@
 
         <section id="contacto" aria-labelledby="contacto-heading">
             <h2 id="contacto-heading">Contacto</h2>
-            <form action="https://formspree.io/f/meojjloe" method="post">
+            <form id="contact-form" action="https://formspree.io/f/meojjloe" method="post">
                 <fieldset>
                     <legend>Envíame un mensaje</legend>
                     
@@ -70,12 +75,12 @@
                     <textarea id="mensaje" name="mensaje" required></textarea>
                     
                     <!-- reCAPTCHA widget -->
-                    <div class="g-recaptcha" data-sitekey="6LdhZgAqAAAAAEfBRxoyi4ZEy06EU3jxhB4hX984"></div>
-            
-                    <button>Enviar</button>
+                    <button class="g-recaptcha" 
+                        data-sitekey="6LdhZgAqAAAAAEfBRxoyi4ZEy06EU3jxhB4hX984" 
+                        data-callback='onSubmit' 
+                        data-action='submit'>Enviar</button>
                 </fieldset>
-            </form>
-                        
+            </form>            
         </section>
     </main>
 

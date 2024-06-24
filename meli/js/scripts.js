@@ -1,5 +1,5 @@
-const publicKey = 'APP_USR-3fa91575-503e-476a-b21d-4f49cae39fa6'; // Reemplaza con tu Public Key
-const integratorId = 'dev_24c65fb163bf11ea96500242ac130004'; // Reemplaza con tu Integrator ID
+const publicKey = 'APP_USR-3fa91575-503e-476a-b21d-4f49cae39fa6'; // Public Key
+const integratorId = 'dev_24c65fb163bf11ea96500242ac130004'; // Integrator ID
 
 // Inicializa el SDK de Mercado Pago
 const mp = new MercadoPago(publicKey, {
@@ -7,61 +7,64 @@ const mp = new MercadoPago(publicKey, {
 });
 
 document.getElementById('checkout-button').addEventListener('click', function () {
-    // Crea la preferencia de pago
-    fetch('https://joseatel.pro/meli/create_preference', { // Asegúrate de que esta URL sea correcta y funcione
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+    // Crear la preferencia de pago
+    const preference = {
+        items: [
+            {
+                id: '1234',
+                title: 'Nombre del producto',
+                description: 'Dispositivo móvil de Tienda e-commerce',
+                picture_url: 'https://www.ejemplo.com/imagen.jpg',
+                quantity: 1,
+                unit_price: 100.0
+            }
+        ],
+        payer: {
+            name: 'Lalo',
+            surname: 'Landa',
+            email: 'test_user_17805074@testuser.com',
+            phone: {
+                area_code: '11',
+                number: '4444-4444'
+            },
+            address: {
+                street_name: 'calle falsa',
+                street_number: 123,
+                zip_code: '11000'
+            }
         },
-        body: JSON.stringify({
-            items: [
+        back_urls: {
+            success: 'https://joseatel.pro/meli/success.html',
+            failure: 'https://joseatel.pro/meli/failure.html',
+            pending: 'https://joseatel.pro/meli/pending.html'
+        },
+        auto_return: 'approved',
+        payment_methods: {
+            excluded_payment_methods: [
                 {
-                    id: '1234',
-                    title: 'Nombre del producto',
-                    description: 'Dispositivo móvil de Tienda e-commerce',
-                    picture_url: 'https://www.ejemplo.com/imagen.jpg',
-                    quantity: 1,
-                    unit_price: 100.0
+                    id: 'visa'
                 }
             ],
-            payer: {
-                name: 'Lalo',
-                surname: 'Landa',
-                email: 'test_user_17805074@testuser.com',
-                phone: {
-                    area_code: '11',
-                    number: '4444-4444'
-                },
-                address: {
-                    street_name: 'calle falsa',
-                    street_number: 123,
-                    zip_code: '11000'
-                }
-            },
-            back_urls: {
-                success: 'https://www.tusitio.com/success',
-                failure: 'https://www.tusitio.com/failure',
-                pending: 'https://www.tusitio.com/pending'
-            },
-            auto_return: 'approved',
-            payment_methods: {
-                excluded_payment_methods: [
-                    {
-                        id: 'visa'
-                    }
-                ],
-                installments: 6
-            },
-            notification_url: 'https://www.tusitio.com/webhook',
-            integrator_id: integratorId
-        })
+            installments: 6
+        },
+        notification_url: 'https://joseatel.pro/meli/webhook',
+        integrator_id: integratorId
+    };
+
+    fetch('https://api.mercadopago.com/checkout/preferences', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667` // Access Token
+        },
+        body: JSON.stringify(preference)
     })
     .then(response => response.json())
-    .then(preference => {
+    .then(data => {
         // Abre el checkout modal de Mercado Pago
         mp.checkout({
             preference: {
-                id: preference.id
+                id: data.id
             },
             render: {
                 container: '.container', // Indica el contenedor donde se abrirá el modal

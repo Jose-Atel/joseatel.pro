@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Exitoso</title>
+</head>
+<body>
+    <h1>¡Pago Exitoso!</h1>
+    <p>Gracias por tu compra. Tu pago ha sido procesado exitosamente.</p>
+    <p>Detalles del pago:</p>
+    <ul>
+        <li>Payment ID: <span id="paymentId"></span></li>
+        <li>External Reference: <span id="externalReference"></span></li>
+        <li>Payment Method ID: <span id="paymentMethodId"></span></li>
+    </ul>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('paymentId').textContent = urlParams.get('payment_id');
+        document.getElementById('externalReference').textContent = urlParams.get('external_reference');
+        document.getElementById('paymentMethodId').textContent = urlParams.get('payment_type');
+    </script>
+</body>
+</html>

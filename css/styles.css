@@ -1,5 +1,10 @@
 /* Variables para tamaños de fuentes */
 :root {
+    /* Background & Colors */
+    --main-background:white;
+    --secundary-background:blue;
+    --main-color:black;
+    --secundary-color:white;
     /* Font Size */
     --font-size-base: 1rem; /* Tamaño base de la fuente - 1rem = 16px */
     --font-size-small: 0.875rem; /* Tamaño de fuente pequeña */
@@ -44,86 +49,10 @@ img {
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: var(--secundary-background);
+    color: var(--secundary-color);
     font-size: 0.9em;
     margin-top: 20px;
 }
 
 /** CSS TEMPORARY **/
-/* Reset de estilos básico para normalizar el diseño */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f3d7d7;
-}
-
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #666;
-}
-
-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Formulario */
-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-form label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-form button[type="submit"] {
-    width: 100%;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    bottom: 0;
-    width: 100%;
-}

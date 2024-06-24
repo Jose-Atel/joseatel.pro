@@ -87,43 +87,27 @@
             </ul>
         </nav>
     </footer>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <p>Te estamos redirigiendo a WhatsApp para enviar tu mensaje.</p>
-            <button class="modal-button" id="btn-confirmar">Ir a WhatsApp</button>
-        </div>
-    </div>
-
     <script>
-        // Función para abrir el modal y preparar el enlace de WhatsApp
-        document.getElementById('btn-whatsapp').addEventListener('click', function() {
+        function enviarWhatsapp() {
             var nombre = document.getElementById('nombre').value;
+            var email = document.getElementById('email').value;
             var telefono = document.getElementById('telefono').value;
-            var mensaje = "Hola, mi nombre es " + nombre + ". Mi número de teléfono es " + telefono + ". Mensaje: " + document.getElementById('mensaje').value;
+            var mensaje = document.getElementById('mensaje').value;
+            
+            // Construir el mensaje con todos los datos del formulario
+            var textoMensaje = "Nombre: " + nombre + "\n";
+            textoMensaje += "Correo electrónico: " + email + "\n";
+            textoMensaje += "Teléfono: " + telefono + "\n";
+            textoMensaje += "Mensaje: " + mensaje;
             
             // URL base de WhatsApp
             var baseUrl = "https://wa.me";
             
             // Componer la URL completa con el mensaje prellenado
-            var url = `${baseUrl}/+59894054380/?text=${encodeURIComponent(mensaje)}`;
+            var url = `${baseUrl}/+59894054380/?text=${encodeURIComponent(textoMensaje)}`;
             
-            // Mostrar el modal
-            var modal = document.getElementById('myModal');
-            modal.style.display = "block";
-            
-            // Redirigir al usuario al hacer clic en "Ir a WhatsApp"
-            document.getElementById('btn-confirmar').addEventListener('click', function() {
-                window.open(url, '_blank');
-                modal.style.display = "none"; // Ocultar el modal
-            });
-        });
-        
-        // Cerrar el modal si el usuario hace clic fuera de él
-        window.onclick = function(event) {
-            var modal = document.getElementById('myModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+            // Abrir enlace en una nueva ventana
+            window.open(url, '_blank');
         }
     </script>
 </body>

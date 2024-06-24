@@ -3,10 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
-    <title>José Atel</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title>Servicios Freelance</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" aria-labelledby="inicio-heading">
+            <h1 id="inicio-heading">Bienvenido a mis Servicios Freelance</h1>
+            <p>Ofrezco soluciones profesionales para tus necesidades.</p>
+        </section>
+
+        <section id="sobre-mi" aria-labelledby="sobre-mi-heading">
+            <h2 id="sobre-mi-heading">Sobre mí</h2>
+            <p>Descripción breve sobre tu experiencia y habilidades.</p>
+        </section>
+
+        <section id="servicios" aria-labelledby="servicios-heading">
+            <h2 id="servicios-heading">Servicios</h2>
+            <article aria-labelledby="servicio1-heading">
+                <h3 id="servicio1-heading">Servicio 1</h3>
+                <p>Descripción del servicio 1.</p>
+            </article>
+            <article aria-labelledby="servicio2-heading">
+                <h3 id="servicio2-heading">Servicio 2</h3>
+                <p>Descripción del servicio 2.</p>
+            </article>
+            <!-- Añadir más servicios según sea necesario -->
+        </section>
+
+        <section id="portafolio" aria-labelledby="portafolio-heading">
+            <h2 id="portafolio-heading">Portafolio</h2>
+            <p>Proyectos destacados y ejemplos de tu trabajo.</p>
+        </section>
+
+        <section id="contacto" aria-labelledby="contacto-heading">
+            <h2 id="contacto-heading">Contacto</h2>
+            <form action="https://formspree.io/f/meojjloe" method="post">
+                <fieldset>
+                    <legend>Envíame un mensaje</legend>
+                    
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required pattern="[a-zA-Z\s]+" title="Solo se permiten letras y espacios">
+                    
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" inputmode="email" title="Debe ser un correo válido">
+                    
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{10}" inputmode="numeric" title="Debe ser un número de 10 dígitos">
+                    
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+            
+                    <!-- reCAPTCHA widget -->
+                    <div class="g-recaptcha" data-sitekey="6Le2CtMpAAAAAJ_3xyUfjCy95iS8WX-1PJFnRtWz"></div>
+            
+                    <button>Enviar</button>
+                </fieldset>
+            </form>            
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 </html>

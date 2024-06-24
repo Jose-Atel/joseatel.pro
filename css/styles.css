@@ -1,0 +1,50 @@
+/* Variables para tamaños de fuentes */
+:root {
+    /* Font Size */
+    --font-size-base: 1rem; /* Tamaño base de la fuente - 1rem = 16px */
+    --font-size-small: 0.875rem; /* Tamaño de fuente pequeña */
+    --font-size-medium: 1.25rem; /* Tamaño de fuente mediana */
+    --font-size-large: 1.5rem; /* Tamaño de fuente grande */
+    /* Font Family */
+    --font-family-base:font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
+    --font-family-special: font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
+}
+/* Estilos para el cuerpo y fuentes */
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para encabezados */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-special);
+    font-weight: normal;
+    margin: 1em 0 0.5em;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1em; }
+h6 { font-size: 0.9em; }
+
+/* Estilo para imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Estilo para pie de página */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    font-size: 0.9em;
+    margin-top: 20px;
+}

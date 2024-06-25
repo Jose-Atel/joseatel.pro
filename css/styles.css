@@ -14,15 +14,36 @@
   --li-color: #F2F2F2; /* Light Gray */
   --li-text-color: #333333; /* Gray */
   --accent-color: #FFFFFF; /* White */
+  /* GENERAL ROOT */
+  --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
+  --font-family-special: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente especial con backup */
 }
+
+/* Dark Theme */
+:root.dark {
+    --background-color: #00296B; /* Deep Navy */
+    --main-heading-color: #FFFFFF; /* White */
+    --body-text-color: #E0E0E0; /* Light Gray */
+    --subheading-color: #40C0CB; /* Turquoise */
+    --button-primary-color: #40C0CB; /* Turquoise */
+    --button-secondary-color: #FFFFFF; /* White */
+    --link-color: #40C0CB; /* Turquoise */
+    --hover-link-color: #FFFFFF; /* White */
+    --footer-color: #333333; /* Dark Gray */
+    --footer-text-color: #E0E0E0; /* Light Gray */
+    --nav-color: #333333; /* Dark Gray */
+    --nav-text-color: #E0E0E0; /* Light Gray */
+    --li-color: #333333; /* Dark Gray */
+    --li-text-color: #E0E0E0; /* Light Gray */
+    --accent-color: #E0E0E0; /* Light Gray */
+  }
 
 body {
   background-color: var(--background-color);
+  font-family: var(--font-family-base);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--main-heading-color);
-}
+
 
 p, li {
   color: var(--body-text-color);
@@ -37,14 +58,7 @@ button {
   color: var(--accent-color);
 }
 
-a {
-  color: var(--link-color);
-  text-decoration: none;
-}
 
-a:hover {
-  color: var(--hover-link-color);
-}
 
 footer {
   background-color: var(--footer-color);
@@ -64,46 +78,17 @@ li {
   color: var(--li-text-color);
 }
 
-/* Dark Theme */
-:root.dark {
-  --background-color: #00296B; /* Deep Navy */
-  --main-heading-color: #FFFFFF; /* White */
-  --body-text-color: #E0E0E0; /* Light Gray */
-  --subheading-color: #40C0CB; /* Turquoise */
-  --button-primary-color: #40C0CB; /* Turquoise */
-  --button-secondary-color: #FFFFFF; /* White */
-  --link-color: #40C0CB; /* Turquoise */
-  --hover-link-color: #FFFFFF; /* White */
-  --footer-color: #333333; /* Dark Gray */
-  --footer-text-color: #E0E0E0; /* Light Gray */
-  --nav-color: #333333; /* Dark Gray */
-  --nav-text-color: #E0E0E0; /* Light Gray */
-  --li-color: #333333; /* Dark Gray */
-  --li-text-color: #E0E0E0; /* Light Gray */
-  --accent-color: #E0E0E0; /* Light Gray */
-}
+
 
 /* Estilos para el cuerpo y fuentes */
-body {
-    font-family: var(--font-family-base);
-    font-size: var(--font-size-base);
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: var(--main-background);
-    color: var(--main-color);
-}
 
-main, header {
-    padding: 1em;
-}
 
 header, footer {
-    background-color: var(--secundary-background);
-    color: var(--secundary-color);
     padding: 1em 0;
     text-align: center;
 }
+
+/* Header */
 
 header nav ul, footer nav ul {
     display: grid;
@@ -128,8 +113,14 @@ header nav ul li a:hover, footer nav ul li a:hover {
     color: var(--link-hover-color);
 }
 
+/* Fin Header */
+
+
+/* Heading */
+
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-special);
+    color: var(--main-heading-color);
     font-weight: normal;
     margin: 1em 0 0.5em;
 }
@@ -141,6 +132,8 @@ h4 { font-size: 1.2em; }
 h5 { font-size: 1em; }
 h6 { font-size: 0.9em; }
 
+/* End Heading */
+
 section {
     margin-bottom: 2em;
     padding: 2em;
@@ -148,15 +141,20 @@ section {
     border-radius: 8px;
 }
 
+/* Anchor */
+
 a {
     color: var(--link-color);
     text-decoration: none;
 }
-
+  
 a:hover {
-    color: var(--link-hover-color);
-    text-decoration: underline;
+    color: var(--hover-link-color);
 }
+
+/* End Anchor */
+
+/* Form */
 
 form {
     display: flex;
@@ -182,6 +180,10 @@ input, textarea {
     box-sizing: border-box;
 }
 
+/* End Form */
+
+/* Button */
+
 button {
     padding: 0.75em;
     background-color: var(--secundary-background);
@@ -196,10 +198,19 @@ button:hover {
     background-color: var(--link-hover-color);
 }
 
+/* End Button */
+
+
+/* Footer */
+
 footer p {
     margin: 0.5em 0;
     font-size: var(--font-size-small);
 }
+
+/* End Footer */
+
+/* IMG */
 
 img {
     max-width: 100%;
@@ -207,3 +218,5 @@ img {
     display: block;
     margin: 10px 0;
 }
+
+/* End IMG */

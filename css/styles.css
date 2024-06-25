@@ -1,24 +1,86 @@
-/* Variables para tamaños de fuentes */
 :root {
-    /* Background & Colors */
-    --main-background: #f4f4f4;
-    --secundary-background: #333;
-    --main-color: #333;
-    --secundary-color: #fff;
-    --link-color: #333;
-    --link-hover-color: #007BFF;
-    --section-background: #fff;
-    --section-border: rgba(0, 0, 0, 0.1);
+  --background-color: #FFFFFF; /* Light Background */
+  --main-heading-color: #003366; /* Dark Blue */
+  --body-text-color: #333333; /* Gray */
+  --subheading-color: #5E35B1; /* Deep Purple */
+  --button-primary-color: #5E35B1; /* Deep Purple */
+  --button-secondary-color: #A8D0E6; /* Light Blue */
+  --link-color: #5E35B1; /* Deep Purple */
+  --hover-link-color: #A8D0E6; /* Light Blue */
+  --footer-color: #F2F2F2; /* Light Gray */
+  --footer-text-color: #333333; /* Gray */
+  --nav-color: #F2F2F2; /* Light Gray */
+  --nav-text-color: #333333; /* Gray */
+  --li-color: #F2F2F2; /* Light Gray */
+  --li-text-color: #333333; /* Gray */
+  --accent-color: #FFFFFF; /* White */
+}
 
-    /* Font Size */
-    --font-size-base: 1rem; /* Tamaño base de la fuente - 1rem = 16px */
-    --font-size-small: 0.875rem; /* Tamaño de fuente pequeña */
-    --font-size-medium: 1.25rem; /* Tamaño de fuente mediana */
-    --font-size-large: 1.5rem; /* Tamaño de fuente grande */
+body {
+  background-color: var(--background-color);
+}
 
-    /* Font Family */
-    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
-    --font-family-special: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente preferida con backup */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--main-heading-color);
+}
+
+p, li {
+  color: var(--body-text-color);
+}
+
+h2 {
+  color: var(--subheading-color);
+}
+
+button {
+  background-color: var(--button-primary-color);
+  color: var(--accent-color);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--hover-link-color);
+}
+
+footer {
+  background-color: var(--footer-color);
+  color: var(--footer-text-color);
+}
+
+nav {
+  background-color: var(--nav-color);
+}
+
+nav a {
+  color: var(--nav-text-color);
+}
+
+li {
+  background-color: var(--li-color);
+  color: var(--li-text-color);
+}
+
+/* Dark Theme */
+:root.dark {
+  --background-color: #00296B; /* Deep Navy */
+  --main-heading-color: #FFFFFF; /* White */
+  --body-text-color: #E0E0E0; /* Light Gray */
+  --subheading-color: #40C0CB; /* Turquoise */
+  --button-primary-color: #40C0CB; /* Turquoise */
+  --button-secondary-color: #FFFFFF; /* White */
+  --link-color: #40C0CB; /* Turquoise */
+  --hover-link-color: #FFFFFF; /* White */
+  --footer-color: #333333; /* Dark Gray */
+  --footer-text-color: #E0E0E0; /* Light Gray */
+  --nav-color: #333333; /* Dark Gray */
+  --nav-text-color: #E0E0E0; /* Light Gray */
+  --li-color: #333333; /* Dark Gray */
+  --li-text-color: #E0E0E0; /* Light Gray */
+  --accent-color: #E0E0E0; /* Light Gray */
 }
 
 /* Estilos para el cuerpo y fuentes */

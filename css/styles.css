@@ -96,8 +96,33 @@
   }
   
   /* Nav */
-  nav a {
+  nav {
+      background-color: var(--nav-color);
       color: var(--nav-text-color);
+  }
+  
+  nav[role="navigation"] {
+      padding: 0.5em;
+  }
+  
+  nav ul[role="menubar"] {
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      list-style: none;
+  }
+  
+  nav ul[role="menubar"] li[role="none"] {
+      margin-right: 1em;
+  }
+  
+  nav ul[role="menubar"] li a[role="menuitem"] {
+      color: var(--nav-text-color);
+      text-decoration: none;
+  }
+  
+  nav ul[role="menubar"] li a[role="menuitem"]:hover {
+      color: var(--hover-link-color);
   }
   
   li {

@@ -87,14 +87,13 @@ nav ul li a:hover {
 
 /** CLASS **/
 
+
 /** END CLASS **/
 /** TASK STYLE **/
 #task1 {
     width: 100%;
     margin: 20px auto;
-    background: #10c;
     color: white;
-    padding: 20px;
 }
 
 #task2 {

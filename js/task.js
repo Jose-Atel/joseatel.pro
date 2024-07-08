@@ -1,18 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const taskContainer = document.getElementById('task-container');
-    const tasks = ['tasks/task1.md']; // Lista de archivos de tareas con la ruta correcta
-
-    const md = new Remarkable();
+    const mainContainer = document.getElementById('main');
+    const tasks = ['tasks/task1.html']; // Lista de archivos HTML de tareas con la ruta correcta
 
     tasks.forEach(task => {
         fetch(task)
             .then(response => response.text())
             .then(data => {
-                const taskHTML = md.render(data); // Convierte Markdown a HTML usando Remarkable
-                const taskDiv = document.createElement('div');
-                taskDiv.className = 'task';
-                taskDiv.innerHTML = taskHTML;
-                taskContainer.appendChild(taskDiv);
+                mainContainer.innerHTML += data; // Inserta el contenido HTML directamente
             })
             .catch(error => console.error('Error al cargar la tarea:', error));
     });

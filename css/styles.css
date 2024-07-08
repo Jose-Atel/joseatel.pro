@@ -1,35 +1,57 @@
+/* styles.css */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-header {
-    background-color: #4CAF50;
+#header, #footer {
+    background-color: #333;
     color: white;
-    padding: 10px;
     text-align: center;
+    padding: 1em 0;
 }
 
 #main {
-    margin: 10px;
+    background-color: #f9f9f9;
+    padding: 1em;
+}
+
+#aside {
+    background-color: #e9e9e9;
+    padding: 1em;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "main aside"
+        "footer footer";
+    grid-template-columns: 1fr 300px;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}
+
+#header {
+    grid-area: header;
+}
+
+#main {
+    grid-area: main;
+}
+
+#aside {
+    grid-area: aside;
+}
+
+#footer {
+    grid-area: footer;
 }
 
 section {
     box-sizing: border-box;
 }
 
-aside {
-    margin: 10px;
-}
-
-
-footer {
-    background-color: #39d;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    bottom: 0;
-}
 
 /** NAV **/
 nav {
@@ -68,7 +90,6 @@ nav ul li a:hover {
     background: #10c;
     color: white;
     padding: 20px;
-    border-radius: 10px;
 }
 
 #task2 {
@@ -77,7 +98,6 @@ nav ul li a:hover {
     background: white;
     color: #39c;
     padding: 20px;
-    border-radius: 10px;
 }
 
 #task3 {
@@ -86,6 +106,5 @@ nav ul li a:hover {
     background: #39c;
     color: white;
     padding: 20px;
-    border-radius: 10px;
 }
 /** END TASK STYLE **/

@@ -1,8 +1,6 @@
 body {
-    display: grid;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
 }
 
 header {
@@ -12,10 +10,18 @@ header {
     text-align: center;
 }
 
-main {
-    height: 100%;
-    padding: 20px;
+#main {
+    margin: 10px;
 }
+
+section {
+    box-sizing: border-box;
+}
+
+aside {
+    margin: 10px;
+}
+
 
 footer {
     background-color: #39d;
@@ -52,8 +58,12 @@ nav ul li a:hover {
 }
 /** END NAV **/
 
+/** CLASS **/
+
+/** END CLASS **/
 /** TASK STYLE **/
 #task1 {
+    width: 100%;
     margin: 20px auto;
     background: #10c;
     color: white;
@@ -62,6 +72,7 @@ nav ul li a:hover {
 }
 
 #task2 {
+    width: 100%;
     margin: 20px auto;
     background: white;
     color: #39c;
@@ -70,10 +81,11 @@ nav ul li a:hover {
 }
 
 #task3 {
+    width: 100%;
     margin: 20px auto;
     background: #39c;
     color: white;
     padding: 20px;
     border-radius: 10px;
 }
-/*END TASK STYLE */
+/** END TASK STYLE **/

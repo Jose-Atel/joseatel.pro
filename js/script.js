@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent("header", "header.html");
     loadComponent("main", "main.html");
+    loadComponent("aside", "aside.html");
     loadComponent("footer", "footer.html");
 
     // TASK

@@ -24,3 +24,21 @@ footer {
     width: 100%;
     bottom: 0;
 }
+/** TASK STYLE **/
+#task-container {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task {
+    margin-bottom: 20px;
+}
+
+.task h1, .task h2, .task h3 {
+    margin-top: 0;
+}
+/*END TASK STYLE */

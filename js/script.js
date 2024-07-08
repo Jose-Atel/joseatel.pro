@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // TASK
     loadComponent("task1", "tasks/task1.html");
     loadComponent("task2", "tasks/task2.html");
+    loadComponent("task3", "tasks/task3.html");
 });
 
 function loadComponent(id, url) {

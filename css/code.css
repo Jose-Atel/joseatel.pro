@@ -8,10 +8,13 @@ figure.code-example {
     font-family: 'Fira Code', monospace;
     font-size: 14px;
     line-height: 1.5;
+    
 }
 
 figure.code-example pre {
     margin: 0;
+    word-wrap: break-word; /* Para hacer que las palabras largas se rompan */
+    white-space: normal; /* Permite que el texto se ajuste automáticamente */
 }
 
 figure.code-example pre code {

@@ -25,20 +25,19 @@ footer {
     bottom: 0;
 }
 /** TASK STYLE **/
-#task-container {
-    width: 80%;
+#task1 {
     margin: 20px auto;
-    background: white;
+    background: #39c;
+    color: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.task {
-    margin-bottom: 20px;
-}
-
-.task h1, .task h2, .task h3 {
-    margin-top: 0;
+#task2 {
+    margin: 20px auto;
+    background: white;
+    color: #39c;
+    padding: 20px;
+    border-radius: 10px;
 }
 /*END TASK STYLE */

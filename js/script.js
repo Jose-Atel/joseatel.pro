@@ -13,7 +13,12 @@ function loadComponent(id, url) {
     fetch(url)
         .then(response => response.text())
         .then(data => {
-            document.getElementById(id).innerHTML = data;
+            const element = document.getElementById(id);
+            if (element) {
+                element.innerHTML = data;
+            } else {
+                console.error(`Element with ID '${id}' not found.`);
+            }
         })
         .catch(error => console.error(`Error loading component ${id}:`, error));
 }

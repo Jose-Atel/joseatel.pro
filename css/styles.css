@@ -16,10 +16,7 @@ body {
 
 #header {
     grid-area: header;
-    background-color: #333;
-    color: white;
     text-align: center;
-    padding: 1em 0;
 }
 
 #main {
@@ -92,7 +89,7 @@ nav ul li a:hover {
 
 /** END CLASS **/
 /** TASK STYLE **/
-#task1 {
+#notification {
     color: white;
     border-radius: 10px;
 }
@@ -108,3 +105,147 @@ nav ul li a:hover {
     color: white;
 }
 /** END TASK STYLE **/
+
+
+/** NEW CSS **/
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.notifications {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo base para la campana */
+.bell {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Pseudo-elemento ::before para el icono de la campana */
+.bell::before {
+     /* Unicode del icono de campana */
+    font-size: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: -5px;
+    left: -0.5em;
+    transition: transform 0.3s ease; /* Transición suave para otros cambios */
+    animation: ring 2s infinite alternate; /* Animación de movimiento periódico */
+}
+
+/* Definición de la animación */
+@keyframes ring {
+    0% {
+        transform: translateX(0); /* Posición inicial */
+    }
+    50% {
+        transform: translateX(-10px); /* Movimiento a la izquierda */
+    }
+    100% {
+        transform: translateX(0); /* Volver a la posición inicial */
+    }
+}
+
+/* Cambio de icono y movimiento para el estado activo (habilitado) */
+.bell-enable::before {
+    content: url('../icons/bell-disable.png'); /* Icono de campana activa */
+    transform: translateX(-15px); /* Movimiento hacia la izquierda cuando está activo */
+}
+
+/* Cambio de icono para el estado inactivo (deshabilitado) */
+.bell-disable::before {
+    content: url('../icons/bell-enable.png'); /* Icono de campana desactivada */
+    animation: none!Important; /* Sin animación cuando está inactivo */
+    pointer-events: none; /* Deshabilitar eventos de puntero (clics) */
+    cursor: default; /* Cambiar el cursor a predeterminado */
+}
+
+.enable {
+    display: block;
+}
+
+.disable {
+    display: none;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0.25em;
+}
+
+.modal-toggle {
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    border: none;
+    z-index: 9999;
+}
+
+.modal-toggle:checked + .modal {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    margin: 0.5em;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+/** END NEW CSS **/
+
+/** MODAL START **/
+
+/** END MODAL START **/

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadComponent("footer", "footer.html");
 
     // TASK
-    loadComponent("task1", "tasks/task1.html");
+    loadComponent("notification", "tasks/notification.html");
     loadComponent("task2", "tasks/task2.html");
     loadComponent("task3", "tasks/task3.html");
 });

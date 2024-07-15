@@ -8,6 +8,7 @@
 :root {
     --primary-bg-color: #000d1a;
     --secundary-bg-color: #000911;
+    --shadow-bg-color: #011b31;
     --border-top: #000000;
     --border-bottom: #002144;
     --color:#f2f2f2;
@@ -86,6 +87,7 @@ section {
     border-top: 1px solid var(--border-bottom);
     text-align: center;
     padding: 1em 0;
+    box-shadow: 0 10px 90px var(--shadow-bg-color);
 }
 
 p {
@@ -195,7 +197,7 @@ hr {
 
 .inactive:hover {
     border-bottom: 5px solid var(--active-color);
-    transition:all 2s;
+    transition:all 3s;
 }
 /** END CLASS **/
 /** TASK STYLE **/

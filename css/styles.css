@@ -86,7 +86,26 @@ section {
     }
 }
 
+/** LOGO **/
 
+/* Estilos para el contenedor del logo y el menú */
+#logo {
+    padding: 5em;
+    text-align: center;
+    position: relative; /* Posición relativa para alinear elementos hijos */
+}
+
+/* Estilos para el título (logo) */
+#logo::before {
+    font-family: 'Pacifico', cursive;
+    content: attr(data-logo); /* Mostrar el contenido del atributo data-logo */
+    color: var(--color); /* Color del texto */
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    display: block; /* Mostrar como bloque */
+}
+
+/** END LOGO **/
 
 /** NAV **/
 nav {

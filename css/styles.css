@@ -178,7 +178,7 @@ h2
 }
 
 .inactive:hover {
-    border-bottom: 5px solid var(--color);
+    border-bottom: 5px solid var(--active-color);
     transition:all 2s;
 }
 /** END CLASS **/

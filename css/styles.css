@@ -139,7 +139,6 @@ nav a {
     text-decoration: none;
     font-size: 1.15em;
     font-family: 'Inconsolata', monospace;
-    border-bottom: 5px solid var(--color);
     margin-left: 0.5rem;
 }
 /** END NAV **/
@@ -170,7 +169,18 @@ h2
 /** END HEADING **/
 
 /** CLASS **/
+.active {
+    border-bottom: 5px solid var(--color);
+}
 
+.inactive {
+    border-bottom: 5px solid var(--border-bottom);
+}
+
+.inactive:hover {
+    border-bottom: 5px solid var(--color);
+    transition:all 2s;
+}
 /** END CLASS **/
 /** TASK STYLE **/
 #notification {

@@ -1,4 +1,4 @@
-header{max-width: 100%;}
+header{max-width: 100%;display: grid;justify-content: center;}
 section{max-width: 100%;}
 article{max-width: 100%;}
 aside{max-width: 100%;}

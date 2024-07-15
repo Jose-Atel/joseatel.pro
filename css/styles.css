@@ -7,6 +7,9 @@
 }
 :root {
     --primary-bg-color: #2b3239;
+    --secundary-bg-color: #313941;
+    --border-top: #22272c;
+    --border-bottom: #36404b;
     --color:#f2f2f2;
     --hover-color: #5CCFAB !important;
     --submenu-bg-color: #374049;
@@ -38,7 +41,7 @@ body {
         "footer";
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto auto;
-    gap: 10px;
+    gap: 0;
     height: 100vh;
     margin: 0;
     
@@ -51,16 +54,27 @@ body {
 
 #main {
     grid-area: main;
-    background-color: var(--gray-4);
     padding: 1em;
+    border-top: 1px solid var(--border-bottom);
+    border-bottom: 1px solid var(--border-top);
+    border-right: 1px solid var(--border-top);
 }
 
 #aside {
     box-sizing: border-box;
     grid-area: aside;
-    background-color: var(--gray-3);
-    padding: 1em;
+    border-top: 1px solid var(--border-bottom);
+    border-bottom: 1px solid var(--border-top);
+    border-left: 1px solid var(--border-bottom);
 }
+
+/** ASIDE ***/
+
+aside {
+    position: relative; /* Necesario para posicionar el pseudoelemento */
+    padding-left: 10px; /* Relleno dentro del aside para separar contenido de los bordes */
+}
+/** END ASIDE **/
 
 section {
     box-sizing: border-box;
@@ -68,22 +82,14 @@ section {
 
 #footer {
     grid-area: footer;
-    background-color: var(--gray-4);
-    color: white;
+    background-color: var(--secundary-bg-color);
+    border-top: 1px solid var(--border-bottom);
     text-align: center;
     padding: 1em 0;
 }
 
-/* Media Query for screens wider than 800px */
-@media (min-width: 800px) {
-    body {
-        grid-template-areas:
-            "header header"
-            "main aside"
-            "footer footer";
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: auto 1fr auto;
-    }
+p {
+    padding: 1em;
 }
 
 /** LOGO **/
@@ -165,11 +171,9 @@ nav a {
 header {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 10px 20px;
-    background-color: var(--dark-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--secundary-bg-color);
+    border-bottom: 1px solid var(--border-top);
 }
 
 
@@ -178,3 +182,16 @@ header {
 /** MODAL START **/
 
 /** END MODAL START **/
+
+
+/* Media Query for screens wider than 800px */
+@media (min-width: 800px) {
+    body {
+        grid-template-areas:
+            "header header"
+            "main aside"
+            "footer footer";
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto 1fr auto;
+    }
+}

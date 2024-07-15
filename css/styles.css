@@ -144,6 +144,31 @@ nav a {
 }
 /** END NAV **/
 
+/** HEADING **/
+
+h1
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    font-size: 2.25rem;
+    padding:1rem;
+    font-family: 'Inconsolata', monospace;
+}
+h2
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    font-size: 1.75rem;
+    padding:1rem;
+    font-family: 'Inconsolata', monospace;
+}
+
+/** END HEADING **/
+
 /** CLASS **/
 
 /** END CLASS **/

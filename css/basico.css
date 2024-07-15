@@ -1,5 +1,8 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet');
 html{font-size:1rem;background-color:var(--primary-bg-color);scroll-behavior: smooth;}
 html, body{margin: 0;padding: 0;}
 body{margin: 0 auto;min-width:16.25rem!Important;max-width:100%;font-family: verdana, geneva,ans-serif;}

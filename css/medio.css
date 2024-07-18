@@ -3,7 +3,7 @@ header{
     display: grid;
     justify-content: center;
     padding: 1em 0 3em 0;
-    box-shadow: inset 0px -50px 100px -50px var(--secundary-bg-color);
+    box-shadow: inset 0px -50px 100px -50px #000;
 }
 section{max-width: 100%;}
 article{max-width: 100%;}

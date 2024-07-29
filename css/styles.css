@@ -1,20 +1,6 @@
 /* IMPORT - NOT USE ONLINE */
 @charset "UTF-8";
-@font-face {
-    font-family: 'Mitr';
-    src: url('/fonts/mitr/Mitr-Regular.woff2') format('woff2'),
-         url('/fonts/mitr/Mitr-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Mitr';
-    src: url('/fonts/mitr/Mitr-Bold.woff2') format('woff2'),
-         url('/fonts/mitr/Mitr-Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-}
+/** **/
 /* BASIC RESET CSS */
 * {
     margin: 0;
@@ -129,7 +115,7 @@ p {
 
 /* Estilos para el título (logo) */
 #logo::before {
-    font-family: "Mitr", sans-serif;
+    font-family: 'Mitr', sans-serif;
     font-weight: 500;
     font-style: normal;
     content: attr(data-logo); /* Mostrar el contenido del atributo data-logo */

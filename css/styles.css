@@ -1,6 +1,20 @@
 /* IMPORT - NOT USE ONLINE */
 @charset "UTF-8";
-@import url('https://joseatel.por/fonts/mitr?family=Mitr:wght@200;300;400;500;600;700&display=swap');
+@font-face {
+    font-family: 'Mitr';
+    src: url('/fonts/mitr/Mitr-Regular.woff2') format('woff2'),
+         url('/fonts/mitr/Mitr-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mitr';
+    src: url('/fonts/mitr/Mitr-Bold.woff2') format('woff2'),
+         url('/fonts/mitr/Mitr-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
 /* BASIC RESET CSS */
 * {
     margin: 0;

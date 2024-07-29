@@ -1,4 +1,4 @@
-name: Deploy with Headers
+name: Deploy with CSP
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -29,3 +29,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           exclude_assets: .nojekyll
+
+      - name: Add CSP Meta Tag
+        run: |
+          echo '<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'self\'; style-src \'self\' \'unsafe-inline\'; font-src \'self\' https://joseatel.pro/fonts/; img-src \'self\' data:; connect-src \'self\'; frame-src \'none\'; object-src \'none\'; base-uri \'self\'; form-action \'self\'; sandbox;">' >> public/index.html

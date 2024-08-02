@@ -15,8 +15,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: no-repeat center center fixed;
+    background-image: url('images/404.jpg'); /* Primer frame estático */
     background-size: cover;
+    background-repeat: no-repeat;
     z-index: -2;
 }
 

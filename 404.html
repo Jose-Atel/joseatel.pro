@@ -13,40 +13,11 @@
     <div class="container">
         <div class="left-panel">
             <div class="content">
-                <h1>Este sitio desaparecera en breve.</h1>
+                <h1>Este sitio desaparecerá en breve.</h1>
                 <h2>Error 404</h2>
             </div>
         </div>
         <div class="right-panel"></div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstFrameImg = 'https://joseatel.pro/images/404.jpg';
-            const gifImg = 'https://joseatel.pro/images/404.gif';
-            
-            // Usar el primer frame del GIF como imagen de fondo temporal
-            document.querySelector('.background').style.backgroundImage = `url(${firstFrameImg})`;
-
-            // Crear un objeto Image para el GIF
-            const img = new Image();
-            img.src = gifImg;
-            
-            // Cuando el GIF se carga completamente
-            img.onload = () => {
-                document.querySelector('.background').style.backgroundImage = `url(${gifImg})`;
-            };
-
-            // Comprobar si ya hay un GIF en caché
-            const cachedGif = localStorage.getItem('backgroundGif');
-            if (cachedGif) {
-                document.querySelector('.background').style.backgroundImage = `url(${cachedGif})`;
-            } else {
-                // Guardar el GIF en caché
-                img.onload = () => {
-                    localStorage.setItem('backgroundGif', gifImg);
-                };
-            }
-        });
-    </script>    
 </body>
 </html>

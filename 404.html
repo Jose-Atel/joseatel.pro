@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
     <title>Página no encontrada</title>
-    <link rel="stylesheet" href="css/404.css">
+    <link rel="stylesheet" href="https://joseatel.pro/css/404.css">
 </head>
 <body>
     <div class="background"></div>
@@ -23,17 +23,30 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const firstFrameImg = 'https://joseatel.pro/images/404.jpg';
+            const gifImg = 'https://joseatel.pro/images/404.gif';
+            
+            // Usar el primer frame del GIF como imagen de fondo temporal
+            document.querySelector('.background').style.backgroundImage = `url(${firstFrameImg})`;
+
+            // Crear un objeto Image para el GIF
             const img = new Image();
-            img.src = 'images/404.gif';
+            img.src = gifImg;
             
+            // Cuando el GIF se carga completamente
             img.onload = () => {
-                document.querySelector('.background').style.backgroundImage = `url(${img.src})`;
-                localStorage.setItem('backgroundGif', img.src);
+                document.querySelector('.background').style.backgroundImage = `url(${gifImg})`;
             };
-            
+
+            // Comprobar si ya hay un GIF en caché
             const cachedGif = localStorage.getItem('backgroundGif');
             if (cachedGif) {
                 document.querySelector('.background').style.backgroundImage = `url(${cachedGif})`;
+            } else {
+                // Guardar el GIF en caché
+                img.onload = () => {
+                    localStorage.setItem('backgroundGif', gifImg);
+                };
             }
         });
     </script>    

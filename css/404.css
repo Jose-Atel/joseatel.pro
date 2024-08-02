@@ -1,11 +1,9 @@
-/* css/404.css */
-
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     height: 100vh;
-    overflow:auto;
+    overflow: auto;
     position: relative;
 }
 
@@ -15,10 +13,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('images/404.jpg'); /* Primer frame estático */
+    background: url('images/404.gif') no-repeat center center fixed;
     background-size: cover;
-    background-repeat: no-repeat;
     z-index: -2;
+    background-color: #000; /* Color de fondo temporal para el JPG */
 }
 
 .overlay {
@@ -66,7 +64,7 @@ h1 {
 h2 {
     font-size: 1.25em;
     margin: 0.5em 0;
-    color:yellow;
+    color: yellow;
 }
 
 p {

@@ -17,6 +17,7 @@ body {
     background-size: cover;
     z-index: -2;
     background-color: #000; /* Color de fondo temporal para el JPG */
+    filter: grayscale(100%);
 }
 
 .overlay {

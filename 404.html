@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Página no encontrada</title>
+    <link rel="stylesheet" href="css/404.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="left-panel">
+            <div class="content">
+                <h1>Parece que lo que buscas desapareció.</h1>
+                <h2>Error 404</h2>
+                <p>Si estás aburrido, ¡mejor mira una peli!</p>
+                <a href="https://www.disneyplus.com/en-ar/movies/marvel-studios-avengers-endgame/aRbVJUb2h2Rf" target="_blank">Ver Película</a>
+            </div>
+        </div>
+        <div class="right-panel"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstFrameImg = 'images/404.jpg';
+            const gifImg = 'images/404.gif';
+            
+            // Mostrar el primer frame del GIF inicialmente
+            document.querySelector('.background').style.backgroundImage = `url(${firstFrameImg})`;
+
+            // Crear un objeto Image para el GIF
+            const img = new Image();
+            img.src = gifImg;
+            
+            // Cuando el GIF se carga completamente
+            img.onload = () => {
+                document.querySelector('.background').style.backgroundImage = `url(${gifImg})`;
+                localStorage.setItem('backgroundGif', gifImg);
+            };
+
+            // Comprobar si ya hay un GIF en caché
+            const cachedGif = localStorage.getItem('backgroundGif');
+            if (cachedGif) {
+                document.querySelector('.background').style.backgroundImage = `url(${cachedGif})`;
+            }
+        });
+    </script>    
+</body>
+</html>

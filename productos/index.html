@@ -27,7 +27,7 @@
     <div id="product-list"></div>
 
     <script>
-        const url = 'https://script.google.com/macros/s/AKfycbxIjd2vDIrwbyv4ikfM7lZhP1xVPiy-5u7tGpOlshrpALSpESgct--3xpuEjfK57RsL8Q/exec';  // Actualiza esta URL si es necesario
+        const url = 'https://script.google.com/macros/s/AKfycbxIjd2vDIrwbyv4ikfM7lZhP1xVPiy-5u7tGpOlshrpALSpESgct--3xpuEjfK57RsL8Q/exec';  // URL del script de Google Apps
 
         async function fetchProducts() {
             try {
@@ -87,14 +87,13 @@
                 const productList = document.getElementById('product-list');
                 productList.innerHTML = ''; // Clear previous content
                 filteredProducts.forEach(row => {
-                    const { title, description, price, imageUrl } = row;
-                    if (title && description && price && imageUrl) {
+                    const { title, description, price } = row;
+                    if (title && description && price) {
                         const productDiv = document.createElement('div');
                         productDiv.innerHTML = `
                             <h2>${title}</h2>
                             <p>${description}</p>
                             <p>Price: $${price}</p>
-                            <img src="${imageUrl}" alt="${title}" style="max-width: 200px;">
                         `;
                         productList.appendChild(productDiv);
                     }

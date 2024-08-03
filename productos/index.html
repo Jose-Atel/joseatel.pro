@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+</head>
+<body>
+    <h1>Product List</h1>
+    <input type="text" id="search" placeholder="Search for products...">
+    <div id="product-list"></div>
+
+    <script>
+        // Enlace de tu aplicación web de Google Apps Script
+        const url = 'https://script.google.com/macros/s/AKfycbxIjd2vDIrwbyv4ikfM7lZhP1xVPiy-5u7tGpOlshrpALSpESgct--3xpuEjfK57RsL8Q/exec';
+
+        async function fetchProducts() {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return [];
+            }
+        }
+
+        function displayProducts(products) {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = ''; // Clear previous content
+
+            products.forEach(row => {
+                const [title, description, price, imageUrl] = row;
+                const productDiv = document.createElement('div');
+                productDiv.innerHTML = `
+                    <h2>${title}</h2>
+                    <p>${description}</p>
+                    <p>Price: $${price}</p>
+                    <img src="${imageUrl}" alt="${title}" style="max-width: 200px;">
+                `;
+                productList.appendChild(productDiv);
+            });
+        }
+
+        document.getElementById('search').addEventListener('input', async (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const products = await fetchProducts();
+            const filteredProducts = products.filter(row => {
+                const title = row[0].toLowerCase();
+                const description = row[1].toLowerCase();
+                return title.includes(searchTerm) || description.includes(searchTerm);
+            });
+            displayProducts(filteredProducts);
+        });
+
+        // Initial load
+        fetchProducts().then(displayProducts);
+    </script>
+</body>
+</html>

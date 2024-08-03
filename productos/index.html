@@ -10,6 +10,12 @@
       padding: 10px;
       margin: 10px;
     }
+    .category-button {
+      margin: 5px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -45,6 +51,7 @@
       categories.forEach(category => {
         const categoryButton = document.createElement('button');
         categoryButton.textContent = category;
+        categoryButton.className = 'category-button';
         categoryButton.addEventListener('click', () => {
           displayProducts(products, category);
         });

@@ -21,19 +21,19 @@
     </style>
 </head>
 <body>
-    <h1>Productos 2</h1>
+    <h1>Productos Lista</h1>
     <div id="categories"></div>
     <div id="subcategories"></div>
     <div id="product-list"></div>
 
     <script>
-        const url = 'https://script.google.com/macros/s/AKfycbxIjd2vDIrwbyv4ikfM7lZhP1xVPiy-5u7tGpOlshrpALSpESgct--3xpuEjfK57RsL8Q/exec';
+        const url = 'https://script.google.com/macros/s/AKfycbxIjd2vDIrwbyv4ikfM7lZhP1xVPiy-5u7tGpOlshrpALSpESgct--3xpuEjfK57RsL8Q/exec';  // Actualiza esta URL si es necesario
 
         async function fetchProducts() {
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                console.log('Data fetched:', data);  // Verifica los datos en la consola
+                console.log('Data fetched:', data);
                 return data;
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -50,7 +50,7 @@
                 div.textContent = category;
                 div.addEventListener('click', () => {
                     displaySubcategories(category);
-                    displayProducts(null, category);
+                    displayProducts(category);
                 });
                 categoryDiv.appendChild(div);
             });
@@ -88,7 +88,7 @@
                 productList.innerHTML = ''; // Clear previous content
                 filteredProducts.forEach(row => {
                     const { title, description, price, imageUrl } = row;
-                    if (title && description && price && imageUrl) {  // Verifica que todos los datos existan
+                    if (title && description && price && imageUrl) {
                         const productDiv = document.createElement('div');
                         productDiv.innerHTML = `
                             <h2>${title}</h2>

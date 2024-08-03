@@ -11,12 +11,16 @@
     </style>
 </head>
 <body>
-    <h1>Lista de producto</h1>
+    <h1>Productos</h1>
     <input type="text" id="search" placeholder="Search for products...">
+    <select id="category-filter">
+        <option value="">All Categories</option>
+        <!-- Las categorías se agregarán aquí dinámicamente -->
+    </select>
+    <button id="search-button">Search</button>
     <div id="product-list"></div>
 
     <script>
-        // Reemplaza con el enlace de tu aplicación web de Google Apps Script
         const url = 'https://script.google.com/macros/s/AKfycbxIjd2vDIrwbyv4ikfM7lZhP1xVPiy-5u7tGpOlshrpALSpESgct--3xpuEjfK57RsL8Q/exec';
 
         async function fetchProducts() {
@@ -36,7 +40,7 @@
             productList.innerHTML = ''; // Clear previous content
 
             products.forEach(row => {
-                const { title, description, price, imageUrl } = row;
+                const { title, description, price, imageUrl, category } = row;
                 if (title && description && price && imageUrl) {  // Verifica que todos los datos existan
                     const productDiv = document.createElement('div');
                     productDiv.innerHTML = `
@@ -44,25 +48,41 @@
                         <p>${description}</p>
                         <p>Price: $${price}</p>
                         <img src="${imageUrl}" alt="${title}" style="max-width: 200px;">
+                        <p>Category: ${category}</p>
                     `;
                     productList.appendChild(productDiv);
                 }
             });
         }
 
-        document.getElementById('search').addEventListener('input', async (event) => {
-            const searchTerm = event.target.value.toLowerCase();
+        async function loadCategories() {
+            const products = await fetchProducts();
+            const categories = new Set(products.map(product => product.category).filter(category => category));
+            const categorySelect = document.getElementById('category-filter');
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categorySelect.appendChild(option);
+            });
+        }
+
+        document.getElementById('search-button').addEventListener('click', async () => {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const selectedCategory = document.getElementById('category-filter').value;
             const products = await fetchProducts();
             const filteredProducts = products.filter(row => {
                 const title = row.title.toLowerCase();
                 const description = row.description.toLowerCase();
-                return title.includes(searchTerm) || description.includes(searchTerm);
+                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                const matchesCategory = !selectedCategory || row.category === selectedCategory;
+                return matchesSearch && matchesCategory;
             });
             displayProducts(filteredProducts);
         });
 
         // Initial load
-        fetchProducts().then(displayProducts);
+        loadCategories().then(() => fetchProducts().then(displayProducts));
     </script>
 </body>
 </html>

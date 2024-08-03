@@ -84,7 +84,7 @@
 
         // Crear y agregar la imagen del producto
         const image = document.createElement('img');
-        image.src = `https://joseatel.pro/productos/img/${product.title.replace(/ /g, '')}.webp`;  // Ajusta según tu formato de imagen
+        image.src = product.imageUrl;  // Usa el campo de URL de la imagen desde Google Sheets
         image.alt = product.title;
 
         // Crear y agregar el título

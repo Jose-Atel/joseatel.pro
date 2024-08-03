@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product List</title>
+    <style>
+        #product-list div {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Product List</h1>
@@ -11,13 +16,14 @@
     <div id="product-list"></div>
 
     <script>
-        // Enlace de tu aplicación web de Google Apps Script
+        // Reemplaza con el enlace de tu aplicación web de Google Apps Script
         const url = 'https://script.google.com/macros/s/AKfycbxIjd2vDIrwbyv4ikfM7lZhP1xVPiy-5u7tGpOlshrpALSpESgct--3xpuEjfK57RsL8Q/exec';
 
         async function fetchProducts() {
             try {
                 const response = await fetch(url);
                 const data = await response.json();
+                console.log('Data fetched:', data);  // Verifica los datos en la consola
                 return data;
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -30,15 +36,17 @@
             productList.innerHTML = ''; // Clear previous content
 
             products.forEach(row => {
-                const [title, description, price, imageUrl] = row;
-                const productDiv = document.createElement('div');
-                productDiv.innerHTML = `
-                    <h2>${title}</h2>
-                    <p>${description}</p>
-                    <p>Price: $${price}</p>
-                    <img src="${imageUrl}" alt="${title}" style="max-width: 200px;">
-                `;
-                productList.appendChild(productDiv);
+                const { title, description, price, imageUrl } = row;
+                if (title && description && price && imageUrl) {  // Verifica que todos los datos existan
+                    const productDiv = document.createElement('div');
+                    productDiv.innerHTML = `
+                        <h2>${title}</h2>
+                        <p>${description}</p>
+                        <p>Price: $${price}</p>
+                        <img src="${imageUrl}" alt="${title}" style="max-width: 200px;">
+                    `;
+                    productList.appendChild(productDiv);
+                }
             });
         }
 
@@ -46,8 +54,8 @@
             const searchTerm = event.target.value.toLowerCase();
             const products = await fetchProducts();
             const filteredProducts = products.filter(row => {
-                const title = row[0].toLowerCase();
-                const description = row[1].toLowerCase();
+                const title = row.title.toLowerCase();
+                const description = row.description.toLowerCase();
                 return title.includes(searchTerm) || description.includes(searchTerm);
             });
             displayProducts(filteredProducts);

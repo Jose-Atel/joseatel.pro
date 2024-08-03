@@ -82,10 +82,13 @@
         const productDiv = document.createElement('div');
         productDiv.classList.add('product');
 
-        // Crear y agregar la imagen del producto
-        const image = document.createElement('img');
-        image.src = product.imageUrl;  // Usa el campo de URL de la imagen desde Google Sheets
-        image.alt = product.title;
+        // Crear y agregar la imagen del producto si existe
+        if (product.imageUrl) {
+          const image = document.createElement('img');
+          image.src = product.imageUrl;  // Usa el campo de URL de la imagen desde Google Sheets
+          image.alt = product.title;
+          productDiv.appendChild(image);
+        }
 
         // Crear y agregar el título
         const title = document.createElement('h2');
@@ -99,7 +102,6 @@
         const price = document.createElement('p');
         price.textContent = `Price: ${product.price}`;
 
-        productDiv.appendChild(image);
         productDiv.appendChild(title);
         productDiv.appendChild(description);
         productDiv.appendChild(price);

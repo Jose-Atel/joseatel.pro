@@ -8,16 +8,22 @@
     <link rel="stylesheet" href="https://joseatel.pro/css/404.css">
 </head>
 <body>
-    <div class="background"></div>
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="left-panel">
-            <div class="content">
-                <h1>Este sitio desaparecerá en breve.</h1>
+    <section class="background"></section>
+    <section class="overlay"></section>
+    <section class="container">
+        <section class="left-panel"></section>
+        <section class="right-panel">
+            <section class="content">
+                <h1>Este sitio desaparecerá en ...</h1>
                 <h2>Error 404</h2>
-            </div>
-        </div>
-        <div class="right-panel"></div>
-    </div>
+            </section>
+        </section>
+    </section>
+    <script>
+        // Redirige a index.html después de 14.1 segundos
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 14100);
+    </script>
 </body>
 </html>

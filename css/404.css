@@ -58,27 +58,6 @@ h2 {
     color: yellow;
 }
 
-p {
-    font-size: 1.2em;
-    margin: 3em 0;
-}
-
-a {
-    display: inline-block;
-    padding: 0.5em 1em;
-    background-color: #0b2ab5;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.25em;
-    border-radius: 0.25em;
-    transition: background-color 0.3s ease;
-}
-
-a:hover {
-    background-color: #fff;
-    color: #0b2ab5;
-}
-
 /* Mobile Styles */
 @media (max-width: 800px) {
     .container {
@@ -87,14 +66,14 @@ a:hover {
         align-items: center;
     }
 
-    .left-panel {
+    .right-panel {
         width: 100%;
         height: 100%;
         justify-content: center;
         align-items: center;
     }
 
-    .right-panel {
+    .left-panel {
         display: none;
     }
 }

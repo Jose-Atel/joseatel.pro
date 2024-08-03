@@ -9,6 +9,13 @@
       border: 1px solid #ccc;
       padding: 10px;
       margin: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .product img {
+      max-width: 100%;
+      height: auto;
     }
     .category-button {
       margin: 5px;
@@ -75,15 +82,24 @@
         const productDiv = document.createElement('div');
         productDiv.classList.add('product');
 
+        // Crear y agregar la imagen del producto
+        const image = document.createElement('img');
+        image.src = `https://joseatel.pro/productos/img/${product.title.replace(/ /g, '')}.webp`;  // Ajusta según tu formato de imagen
+        image.alt = product.title;
+
+        // Crear y agregar el título
         const title = document.createElement('h2');
         title.textContent = product.title;
 
+        // Crear y agregar la descripción
         const description = document.createElement('p');
         description.textContent = product.description;
 
+        // Crear y agregar el precio
         const price = document.createElement('p');
         price.textContent = `Price: ${product.price}`;
 
+        productDiv.appendChild(image);
         productDiv.appendChild(title);
         productDiv.appendChild(description);
         productDiv.appendChild(price);

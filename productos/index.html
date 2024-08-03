@@ -8,16 +8,22 @@
         #product-list div {
             margin-bottom: 20px;
         }
+        .category, .subcategory {
+            cursor: pointer;
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .category:hover, .subcategory:hover {
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 <body>
     <h1>Productos</h1>
-    <input type="text" id="search" placeholder="Search for products...">
-    <select id="category-filter">
-        <option value="">All Categories</option>
-        <!-- Las categorías se agregarán aquí dinámicamente -->
-    </select>
-    <button id="search-button">Search</button>
+    <div id="categories"></div>
+    <div id="subcategories"></div>
     <div id="product-list"></div>
 
     <script>
@@ -35,54 +41,72 @@
             }
         }
 
-        function displayProducts(products) {
-            const productList = document.getElementById('product-list');
-            productList.innerHTML = ''; // Clear previous content
-
-            products.forEach(row => {
-                const { title, description, price, imageUrl, category } = row;
-                if (title && description && price && imageUrl) {  // Verifica que todos los datos existan
-                    const productDiv = document.createElement('div');
-                    productDiv.innerHTML = `
-                        <h2>${title}</h2>
-                        <p>${description}</p>
-                        <p>Price: $${price}</p>
-                        <img src="${imageUrl}" alt="${title}" style="max-width: 200px;">
-                        <p>Category: ${category}</p>
-                    `;
-                    productList.appendChild(productDiv);
-                }
-            });
-        }
-
-        async function loadCategories() {
-            const products = await fetchProducts();
-            const categories = new Set(products.map(product => product.category).filter(category => category));
-            const categorySelect = document.getElementById('category-filter');
+        function displayCategories(categories) {
+            const categoryDiv = document.getElementById('categories');
+            categoryDiv.innerHTML = '';
             categories.forEach(category => {
-                const option = document.createElement('option');
-                option.value = category;
-                option.textContent = category;
-                categorySelect.appendChild(option);
+                const div = document.createElement('div');
+                div.className = 'category';
+                div.textContent = category;
+                div.addEventListener('click', () => {
+                    displaySubcategories(category);
+                    displayProducts(null, category);
+                });
+                categoryDiv.appendChild(div);
             });
         }
 
-        document.getElementById('search-button').addEventListener('click', async () => {
-            const searchTerm = document.getElementById('search').value.toLowerCase();
-            const selectedCategory = document.getElementById('category-filter').value;
-            const products = await fetchProducts();
-            const filteredProducts = products.filter(row => {
-                const title = row.title.toLowerCase();
-                const description = row.description.toLowerCase();
-                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
-                const matchesCategory = !selectedCategory || row.category === selectedCategory;
-                return matchesSearch && matchesCategory;
+        function displaySubcategories(category) {
+            const subcategoryDiv = document.getElementById('subcategories');
+            subcategoryDiv.innerHTML = '';
+            fetchProducts().then(products => {
+                const subcategories = new Set(products
+                    .filter(product => product.category === category)
+                    .map(product => product.subcategory)
+                    .filter(subcat => subcat)
+                );
+                subcategories.forEach(subcategory => {
+                    const div = document.createElement('div');
+                    div.className = 'subcategory';
+                    div.textContent = subcategory;
+                    div.addEventListener('click', () => {
+                        displayProducts(category, subcategory);
+                    });
+                    subcategoryDiv.appendChild(div);
+                });
             });
-            displayProducts(filteredProducts);
-        });
+        }
 
-        // Initial load
-        loadCategories().then(() => fetchProducts().then(displayProducts));
+        function displayProducts(category = '', subcategory = '') {
+            fetchProducts().then(products => {
+                const filteredProducts = products.filter(product => {
+                    const matchesCategory = !category || product.category === category;
+                    const matchesSubcategory = !subcategory || product.subcategory === subcategory;
+                    return matchesCategory && matchesSubcategory;
+                });
+                const productList = document.getElementById('product-list');
+                productList.innerHTML = ''; // Clear previous content
+                filteredProducts.forEach(row => {
+                    const { title, description, price, imageUrl } = row;
+                    if (title && description && price && imageUrl) {  // Verifica que todos los datos existan
+                        const productDiv = document.createElement('div');
+                        productDiv.innerHTML = `
+                            <h2>${title}</h2>
+                            <p>${description}</p>
+                            <p>Price: $${price}</p>
+                            <img src="${imageUrl}" alt="${title}" style="max-width: 200px;">
+                        `;
+                        productList.appendChild(productDiv);
+                    }
+                });
+            });
+        }
+
+        // Load categories on initial load
+        fetchProducts().then(products => {
+            const categories = new Set(products.map(product => product.category).filter(cat => cat));
+            displayCategories(categories);
+        });
     </script>
 </body>
 </html>

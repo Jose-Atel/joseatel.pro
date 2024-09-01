@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.message {
+    background-color: white;
+    color: black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    font-size: 1em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+#gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 60px; /* Ajusta según la altura del mensaje */
+    width: 100vw;
+    height: 70vh; /* Limitar al 70% del viewport */
+    overflow: hidden;
+    z-index: 1; /* Asegura que el contenedor de bloques esté arriba */
+}
+
+#blocksContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#bulletsContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#ship {
+    position: absolute;
+    bottom: 10px; /* Espacio desde el fondo */
+    left: 50%;
+    width: 50px;
+    height: 30px;
+    background-color: white;
+    transform: translateX(-50%);
+    z-index: 0; /* Asegura que la nave esté debajo del contenedor de bloques */
+}
+
+.block {
+    position: absolute;
+    width: 25px; /* Tamaño de bloque ajustado */
+    height: 25px; /* Tamaño de bloque ajustado */
+    background-color: red; /* Default color */
+}
+
+.bullet {
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    background-color: red;
+}

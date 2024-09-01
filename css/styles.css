@@ -1,9 +1,9 @@
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #000;
+    overflow: hidden; /* Evitar scrollbars innecesarios */
 }
 
 .message {
@@ -11,14 +11,15 @@ body {
     color: black;
     width: 100%;
     display: flex;
-    justify-content: center;
     padding: 1em;
     font-size: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing: border-box;
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 10;
-    box-sizing: border-box;
+    text-align: center;
 }
 
 #gameContainer {
@@ -26,47 +27,49 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 60px; /* Ajusta según la altura del mensaje */
-    width: 100vw;
-    height: 70vh; /* Limitar al 70% del viewport */
-    overflow: hidden;
-    z-index: 1; /* Asegura que el contenedor de bloques esté arriba */
+    height: calc(100vh - 50px); /* Ajustar según la altura de .message */
+    position: relative;
 }
 
 #blocksContainer {
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    height: 100%;
-}
-
-#bulletsContainer {
+    max-height: 70vh; /* No superar el 70% del alto del viewport */
     position: relative;
-    width: 100%;
-    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 #ship {
     position: absolute;
-    bottom: 10px; /* Espacio desde el fondo */
-    left: 50%;
+    bottom: 10px; /* Ajustar según la necesidad */
     width: 50px;
     height: 30px;
     background-color: white;
-    transform: translateX(-50%);
-    z-index: 0; /* Asegura que la nave esté debajo del contenedor de bloques */
+    box-sizing: border-box;
 }
 
-.block {
+#bulletsContainer {
     position: absolute;
-    width: 25px; /* Tamaño de bloque ajustado */
-    height: 25px; /* Tamaño de bloque ajustado */
-    background-color: red; /* Default color */
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.bullet {
-    position: absolute;
-    width: 5px;
-    height: 10px;
-    background-color: red;
+/* Ajustes para móviles */
+@media (max-width: 600px) {
+    .message {
+        font-size: 0.8em;
+    }
+
+    #ship {
+        width: 40px;
+        height: 25px;
+    }
+
+    #blocksContainer {
+        max-height: 60vh; /* Ajustar en móviles si es necesario */
+    }
 }

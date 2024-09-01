@@ -1,75 +1,61 @@
 body {
     margin: 0;
-    padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #000;
-    overflow: hidden; /* Evitar scrollbars innecesarios */
-}
-
-.message {
-    background-color: white;
-    color: black;
-    width: 100%;
+    font-family: Arial, sans-serif;
     display: flex;
-    padding: 1em;
-    font-size: 1em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    box-sizing: border-box;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 10;
-    text-align: center;
-}
-
-#gameContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: calc(100vh - 50px); /* Ajustar según la altura de .message */
-    position: relative;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
-#blocksContainer {
+.container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
     width: 100%;
-    max-height: 70vh; /* No superar el 70% del alto del viewport */
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background: #1e1e1e;
 }
 
-#ship {
-    position: absolute;
-    bottom: 10px; /* Ajustar según la necesidad */
-    width: 50px;
-    height: 30px;
-    background-color: white;
-    box-sizing: border-box;
+.image {
+    flex: 1;
+    max-width: 500px;
+    margin-right: 20px;
 }
 
-#bulletsContainer {
-    position: absolute;
-    bottom: 0;
+.image img {
     width: 100%;
-    height: 100%;
-    box-sizing: border-box;
+    border-radius: 10px;
+    display: block;
 }
 
-/* Ajustes para móviles */
-@media (max-width: 600px) {
-    .message {
-        font-size: 0.8em;
+.text {
+    flex: 2;
+}
+
+.text h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: #f5f5f5;
+}
+
+.text p {
+    font-size: 1rem;
+    color: #cccccc;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
     }
 
-    #ship {
-        width: 40px;
-        height: 25px;
-    }
-
-    #blocksContainer {
-        max-height: 60vh; /* Ajustar en móviles si es necesario */
+    .image {
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 }

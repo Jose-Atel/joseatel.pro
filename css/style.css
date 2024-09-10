@@ -17,6 +17,9 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
+    max-width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
 }
 
 img {
@@ -80,4 +83,23 @@ h1 {
 
 .dark-mode .toggle-switch::before {
     transform: translateX(26px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .toggle-switch {
+        width: 50px;
+        height: 28px;
+    }
+
+    .toggle-switch::before {
+        width: 24px;
+        height: 24px;
+    }
 }

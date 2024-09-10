@@ -1,3 +1,4 @@
+/* Estilos básicos para el cuerpo */
 body {
     margin: 0;
     padding: 0;
@@ -7,99 +8,132 @@ body {
     align-items: center;
     height: 100vh;
     text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-    background-color: #f0f0f0; /* Color de fondo por defecto */
-}
-
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-    max-width: 90%;
-    max-height: 80vh;
-    overflow: hidden;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-h1 {
-    color: #333;
-    margin-top: 20px;
-}
-
-.dark-mode {
-    background-color: #333; /* Color de fondo en modo oscuro */
+    background-color: #000; /* Color oscuro por defecto */
     color: #fff;
-}
-
-.dark-mode .container {
-    background-color: #444; /* Color de fondo del contenedor en modo oscuro */
-    color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.dark-mode h1 {
-    color: #fff;
-}
-
-.toggle-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-}
-
-.toggle-switch {
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    background-color: #ccc;
-    border-radius: 34px;
     position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    overflow: hidden; /* Para asegurarnos que el astronauta no se salga del viewport */
 }
 
-.toggle-switch::before {
-    content: '';
+/* Pseudo-elemento para fondo */
+body::before {
+    content: "";
     position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 50%;
-    transition: transform 0.3s;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imagenes/galaxia.jpg'); /* Imagen de fondo de la galaxia */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    transition: transform 5s ease, filter 5s ease; /* Animación para el zoom y el filtro */
 }
 
-.dark-mode .toggle-switch {
-    background-color: #333;
+/* Capa de color negro con transparencia sobre el fondo */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa negra con transparencia */
+    z-index: -1;
+    transition: opacity 5s ease; /* Transición de la capa negra */
 }
 
-.dark-mode .toggle-switch::before {
-    transform: translateX(26px);
+/* Pantalla negra durante el zoom */
+.zooming::before {
+    transform: scale(5.5) translateY(-60%); /* Movimiento y zoom del fondo */
+    filter: blur(20px); /* Desenfoque de la imagen de fondo */
+}
+
+/* Pantalla negra */
+.zooming::after {
+    opacity: 1; /* Muestra la capa negra */
+}
+
+/* Animación del astronauta flotante */
+@keyframes floating {
+    0%, 100% {
+        transform: translate(-40%, 0);
+    }
+    50% {
+        transform: translate(-40%, 60%); /* Movimiento de subida y bajada */
+    }
+}
+
+/* Estilo del astronauta al acelerar */
+.astronauta.moving {
+    animation: moveToScreen 15s forwards ease-in-out; /* Mueve al astronauta hacia la cámara */
+}
+
+/* Animación del astronauta para zoom in y zoom out */
+@keyframes moveToScreen {
+    0% {
+        transform: translate(-50%, 0) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(8); /* Mueve al astronauta hacia la cámara */
+    }
+    100% {
+        transform: translate(-50%, 0) scale(1); /* Regresa a la posición inicial */
+    }
+}
+
+/* Estilo del astronauta al acelerar */
+.astronauta.moving {
+    animation: moveToScreen 15s ease-in-out; /* Mueve al astronauta hacia la cámara y luego regresa */
+}
+
+/* Animación del astronauta flotante */
+@keyframes floating {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+    50% {
+        transform: translate(-50%, -45px); /* Movimiento de subida y bajada */
+    }
+}
+
+
+/* Animación de regreso del astronauta */
+@keyframes moveBack {
+    0% {
+        transform: translate(-50%, -70%) scale(6); /* Posición final de la animación de ida */
+    }
+    100% {
+        transform: translate(-50%, 0) scale(5); /* Regreso a la posición inicial */
+    }
+}
+
+/* Astronauta flotante al inicio */
+.astronauta {
+    position: absolute;
+    bottom: 37%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background-image: url('../imagenes/astronauta.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateX(-80%);
+    animation: floating 15s ease-in-out infinite; /* Animación de flotación */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .container {
-        padding: 10px;
+    .astronauta {
+        width: 120px;
+        height: 120px;
     }
 }
 
 @media (max-width: 480px) {
-    .toggle-switch {
-        width: 50px;
-        height: 28px;
-    }
-
-    .toggle-switch::before {
-        width: 24px;
-        height: 24px;
+    .astronauta {
+        width: 100px;
+        height: 100px;
     }
 }
